@@ -7,11 +7,15 @@ class MailerApi
   end
 
   def send
-    result = HTTParty.post(
-      options[:endpoint],
-      body: form_data,
-      headers: headers
-    )
+    result = begin
+      HTTParty.post(
+        options[:endpoint],
+        body: form_data,
+        headers: headers
+      )
+    rescue errno::
+        nil
+    end
   end
 
   private
