@@ -12,10 +12,11 @@ class MailerApi
         options[:endpoint],
         body: form_data,
         headers: headers
-      )
-    rescue errno::
-        nil
+      ) 
+    rescue Errno::ECONNREFUSED
+      nil
     end
+
   end
 
   private
