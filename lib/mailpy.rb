@@ -16,12 +16,12 @@ module Mailpy
     end
 
     private
-    def perform_send_request(mail, settings)
-      result = MailerApi.new(mail, settings).send
-      if result.present?
-        raise(MailpyDeliveryError, JSON.parse(result.body)['message']) unless result.code === 200
-        result
+      def perform_send_request(mail, settings)
+        result = MailerApi.new(mail, settings).send
+        if result.present?
+          raise(MailpyDeliveryError, JSON.parse(result.body)['message']) unless result.code === 200
+          result
+        end
       end
-    end
   end
 end
